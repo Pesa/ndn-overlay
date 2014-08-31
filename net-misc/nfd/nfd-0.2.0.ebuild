@@ -16,7 +16,7 @@ else
 	SRC_URI="http://named-data.net/downloads/ndn-platform-0.3/${P}.tar.bz2"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
