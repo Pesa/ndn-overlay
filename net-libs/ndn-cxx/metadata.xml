@@ -5,7 +5,6 @@
 	<email>pesa@gentoo.org</email>
 </maintainer>
 <use>
-	<flag name="c++11">Build using the C++11 standard</flag>
 	<flag name="tools">Build and install command line tools</flag>
 </use>
 </pkgmetadata>
