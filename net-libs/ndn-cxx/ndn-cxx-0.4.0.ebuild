@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS.md README{,-dev}.md docs/release-notes/release-notes-${PV}.rst )
+DOCS=( AUTHORS.md README{,-dev}.md docs/release-notes/ )
 
 pkg_setup() {
 	python-any-r1_pkg_setup
