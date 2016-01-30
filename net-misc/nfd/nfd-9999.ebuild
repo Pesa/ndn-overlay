@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ IUSE="debug +pcap +pch test +websocket"
 
 RDEPEND="
 	>=dev-libs/boost-1.48:=
-	~net-libs/ndn-cxx-${PV}
+	~net-libs/ndn-cxx-${PV}:=
 	pcap? ( net-libs/libpcap )
 "
 DEPEND="${RDEPEND}
@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS.md README{,-dev}.md docs/{FAQ,RELEASE_NOTES}.rst )
+DOCS=( AUTHORS.md README{,-dev}.md docs/FAQ.rst docs/release-notes/ )
 
 pkg_setup() {
 	python-any-r1_pkg_setup
@@ -44,9 +44,9 @@ pkg_setup() {
 src_configure() {
 	waf-utils_src_configure \
 		--sysconfdir="${EPREFIX}/etc" \
-		$(use debug && echo --debug) \
-		$(use pcap || echo --without-libpcap) \
-		$(use pch || echo --without-pch) \
-		$(use test && echo --with-tests) \
-		$(use websocket || echo --without-websocket)
+		$(usex debug --debug '') \
+		$(usex pcap '' --without-libpcap) \
+		$(usex pch '' --without-pch) \
+		$(usex test --with-tests '') \
+		$(usex websocket '' --without-websocket)
 }
