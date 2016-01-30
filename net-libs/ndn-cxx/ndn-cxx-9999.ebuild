@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,10 +20,10 @@ else
 fi
 
 LICENSE="LGPL-3+"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS=""
 
-IUSE="debug examples +pch test +tools"
+IUSE="debug examples +pch static-libs test +tools"
 
 RDEPEND="
 	dev-db/sqlite:3
@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS.md README{,-dev}.md docs/RELEASE_NOTES.rst )
+DOCS=( AUTHORS.md README{,-dev}.md docs/release-notes/ )
 
 pkg_setup() {
 	python-any-r1_pkg_setup
@@ -44,9 +44,10 @@ pkg_setup() {
 src_configure() {
 	waf-utils_src_configure \
 		--sysconfdir="${EPREFIX}/etc" \
-		$(use debug && echo --debug) \
-		$(use examples && echo --with-examples) \
-		$(use pch || echo --without-pch) \
-		$(use test && echo --with-tests) \
-		$(use tools || echo --without-tools)
+		$(usex debug --debug '') \
+		$(usex examples --with-examples '') \
+		$(usex pch '' --without-pch) \
+		$(use_enable static-libs static) \
+		$(usex test --with-tests '') \
+		$(usex tools '' --without-tools)
 }
