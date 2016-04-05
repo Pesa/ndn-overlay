@@ -21,7 +21,7 @@ fi
 
 LICENSE="LGPL-3+"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 IUSE="debug examples +pch static-libs test +tools"
 
