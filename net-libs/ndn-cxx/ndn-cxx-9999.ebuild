@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,6 @@ IUSE="debug examples +pch static-libs test +tools"
 RDEPEND="
 	dev-db/sqlite:3
 	>=dev-libs/boost-1.54:=
-	dev-libs/crypto++:=
 	>=dev-libs/openssl-1.0.1:0=
 "
 DEPEND="${RDEPEND}
